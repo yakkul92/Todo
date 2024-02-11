@@ -45,23 +45,34 @@ public class Todo{
           System.out.printf("%d・・・%s%n",i,list.get(i).showStatus());
         }
     }
-  class ToDo{
-    // フィールド
-    String title;
-    int importance;
-
-    // コンストラクタ
-    ToDo(String title, int importance){
-        this.title = title;
-        this.importance = importance;
+    
+    static void addItem(ArrayList<ToDo> list,Scanner sc){
+        System.out.println("新規ToDoを作成します。");
+        System.out.print("Todo内容を入力してください>>");
+        String title=sc.next();
+        System.out.print("重要度を1~10(最大)で入力してください>>");
+        int importance = sc.nextInt();
+        ToDo t = new ToDo(title,importance);
+        list.add(t);
     }
     
-    // インスタンスメソッド
-    String showStatus(){
-        return String.format("%s/重要度:%d", this.title, this.importance);
+    class ToDo{
+        // フィールド
+        String title;
+        int importance;
+
+        // コンストラクタ
+        ToDo(String title, int importance){
+            this.title = title;
+            this.importance = importance;
+        }
+        
+        // インスタンスメソッド
+        String showStatus(){
+            return String.format("%s/重要度:%d", this.title, this.importance);
+        }
+        void changeImportance(int importance){
+            this.importance = importance;
+            System.out.println("重要度を変更しました。");
+        }
     }
-    void changeImportance(int importance){
-        this.importance = importance;
-        System.out.println("重要度を変更しました。");
-    }
-  }
