@@ -56,6 +56,26 @@ public class Todo{
         list.add(t);
     }
     
+    static void updateItem(ArrayList<ToDo> list,Scanner sc){
+        if(list.size() == 0){
+          System.out.println("まだToDoがありません");
+          return;
+        }
+        System.out.printf("重要度を変更します。番号を入力してください。0~%d>>",list.size()-1);
+        int no = sc.nextInt();
+        ToDo t = list.get(no);
+        System.out.print("重要度を再設定してください>>");
+        int importance=sc.nextInt();
+        t.changeImportance(importance);
+    }
+    
+    static void deleteItem(ArrayList<ToDo> list,Scanner sc){
+        System.out.printf("Todoを削除します。番号を入力してください。0~%d>",list.size()-1);
+        int no = sc.nextInt();
+        list.remove(no);
+        System.out.println("1件削除しました。");
+    }
+    
     class ToDo{
         // フィールド
         String title;
