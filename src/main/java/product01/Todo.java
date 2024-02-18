@@ -6,7 +6,23 @@ import java.io.*;
 public class Todo{
     public static void main(String[] args) throws Exception{
         Scanner sc = new Scanner(System.in);
-        ArrayList<ToDo> list = new ArrayList<>();
+
+        File file = new File("todo.csv");
+
+        // ArrayList<ToDo> list = new ArrayList<>();
+
+        ArrayList<ToDo> list;
+        if (file.exists()) {
+          list = loadFile(file);          
+        }else{
+          list = new ArrayList<>();
+        }
+        if (list.size() == 0) {
+          System.out.println("ToDoは1件もありません");
+        }else{
+          displayList(list);
+        }
+
         while(true){
           System.out.println("??操作を入力してください。??");
           System.out.print("1/登録 2/重要度変更 3/削除 4/終了>");
