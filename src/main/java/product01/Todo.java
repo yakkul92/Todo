@@ -91,6 +91,11 @@ public class Todo{
         list.remove(no);
         System.out.println("1件削除しました。");
     }
+
+    static ArrayList<ToDo> loadFile(File file) throws Exception{
+      
+    }
+      
     
     class ToDo{
         // フィールド
