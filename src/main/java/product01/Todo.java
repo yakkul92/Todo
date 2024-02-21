@@ -93,7 +93,32 @@ public class Todo{
     }
 
     static ArrayList<ToDo> loadFile(File file) throws Exception{
-      
+      ArrayList<ToDo> list = new FileInputStream(file);
+      InputStreamReader isr = new InputStreamReader(fis, "UTF-8");
+      BufferedReader br = new BufferedReader(isr);
+
+      String line:
+      while((line = br.readLine()) != null){
+        String[] values = line.split(",");
+        String title = value[0];
+        int importance = Integer.parseInt(values[1]);
+        ToDo t = new ToDo(title, importance);
+        list.add(t);
+      }
+      br.close();
+      return list;
+    }
+
+    static void saveFile(File file,ArrayList<ToDo> List) throws Exception{
+      FileOutputStream fos = new FileOutputStream(file);
+      OutputStreamWriter osw = new OutputStreamWriter(fos,"UTF-8");
+      BufferedWriter bw = new BufferedWriter(osw);
+
+      for(ToDo c :list){
+        bw.write(c.toCSV());
+        bw.newLine();
+      }
+      bw.close();
     }
       
     
